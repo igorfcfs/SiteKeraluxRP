@@ -70,6 +70,27 @@
   .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
   .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.4); border-radius: 2px; }
 
+  /* MapLibre popup overrides — dark theme */
+  .maplibregl-popup-content {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .maplibregl-popup-tip {
+    border-top-color: #1e293b !important;
+    border-bottom-color: #1e293b !important;
+  }
+  .maplibregl-popup-close-button {
+    display: none !important;
+  }
+  .maplibregl-ctrl-attrib {
+    background: rgba(15,23,42,0.75) !important;
+    color: #64748b !important;
+    border-radius: 4px !important;
+  }
+  .maplibregl-ctrl-attrib a { color: #94a3b8 !important; }
+
   /* Fan carousel layout */
   .fan-layout {
     position: relative;

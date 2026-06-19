@@ -6,6 +6,7 @@ import ColetaSection from './components/ColetaSection'
 import EcopontosSection from './components/EcopontosSection'
 import ImpactosSection from './components/ImpactosSection'
 import GaleriaSection from './components/GaleriaSection'
+import MapaSection from './components/MapaSection'
 import SolucoesSection from './components/SolucoesSection'
 import DireitosSection from './components/DireitosSection'
 import Footer from './components/Footer'
@@ -21,6 +22,7 @@ export default function App() {
         <EcopontosSection />
         <ImpactosSection />
         <GaleriaSection />
+        <MapaSection />
         <SolucoesSection />
         <DireitosSection />
         <Footer />

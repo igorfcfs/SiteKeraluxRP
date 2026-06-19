@@ -8,6 +8,7 @@ const links = [
   { href: '#ecopontos', label: 'Ecopontos' },
   { href: '#impactos',  label: 'Impactos' },
   { href: '#galeria',   label: 'Galeria' },
+  { href: '#mapa',      label: 'Mapa' },
   { href: '#solucoes',  label: 'Soluções' },
   { href: '#direitos',  label: 'Direitos' },
 ]
