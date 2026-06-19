@@ -69,4 +69,41 @@
   .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
   .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
   .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(100,116,139,0.4); border-radius: 2px; }
+
+  /* Fan carousel layout */
+  .fan-layout {
+    position: relative;
+    height: 22rem;
+    overflow: visible;
+  }
+  .fan-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 7rem;
+    height: 11rem;
+    margin-left: -3.5rem;
+    margin-top: -5.5rem;
+    border-radius: 0.875rem;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  @media (min-width: 480px) {
+    .fan-layout { height: 26rem; }
+    .fan-card { width: 8rem; height: 13rem; margin-left: -4rem; margin-top: -6.5rem; }
+  }
+  @media (min-width: 640px) {
+    .fan-layout { height: 28rem; }
+    .fan-card { width: 9rem; height: 14.5rem; margin-left: -4.5rem; margin-top: -7.25rem; }
+  }
+  @media (min-width: 768px) {
+    .fan-layout { height: 34rem; }
+    .fan-card { width: 11rem; height: 17.5rem; margin-left: -5.5rem; margin-top: -8.75rem; }
+  }
+  @media (min-width: 1024px) {
+    .fan-layout { height: 38rem; }
+    .fan-card { width: 13rem; height: 20rem; margin-left: -6.5rem; margin-top: -10rem; }
+  }
 }
