@@ -76,7 +76,7 @@ export default function ProblemaSection() {
                 initial={{ opacity: 0, y: 32 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={`${c.glass} rounded-2xl p-6 flex flex-col gap-3 border ${c.border} hover:scale-[1.02] transition-transform`}
+                className={`${c.glass} rounded-2xl p-6 flex flex-col gap-3 border ${c.border} hover:border-opacity-50 hover:bg-white/[0.06] transition-colors`}
               >
                 <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center ${c.icon}`}>
                   <Icon className="w-5 h-5" />

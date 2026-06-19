@@ -22,8 +22,8 @@ const tabs = [
     frequencia: 'Quinzenal',
     dias: ['Consulte o 156 ou site da Prefeitura para o dia exato no seu endereço'],
     coleta: ['Móveis velhos (sofás, camas, armários)', 'Colchões', 'Eletrodomésticos inservíveis', 'Pneus'],
-    naoColeta: ['⚠️ Entulho de obras (cimento, tijolos, cerâmica)', 'Lixo doméstico', 'Lixo hospitalar ou industrial', 'Material de jardinagem/poda'],
-    tip: '⚠️ O entulho de obras NÃO é recolhido pela Cata-Bagulho por definição do programa. Leve ao Ecoponto.',
+    naoColeta: ['Entulho de obras (cimento, tijolos, cerâmica)', 'Lixo doméstico', 'Lixo hospitalar ou industrial', 'Material de jardinagem/poda'],
+    tip: 'O entulho de obras NÃO é recolhido pela Cata-Bagulho por definição do programa. Leve ao Ecoponto.',
     warning: true,
   },
   {
@@ -85,7 +85,7 @@ export default function ColetaSection() {
               <button
                 key={id}
                 onClick={() => setActive(id)}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-sm font-semibold transition-all relative ${
+                className={`flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-sm font-semibold transition-all relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
                   isActive
                     ? `${colorMap[color].active} border`
                     : `text-slate-400 ${colorMap[color].tab}`
@@ -146,10 +146,10 @@ export default function ColetaSection() {
                   <XCircle className="w-3.5 h-3.5" /> Não recolhe
                 </p>
                 <ul className="space-y-2">
-                  {tab.naoColeta.map(item => (
-                    <li key={item} className={`flex items-start gap-2 text-sm ${item.startsWith('⚠️') ? 'text-amber-300 font-medium' : 'text-slate-300'}`}>
+                  {tab.naoColeta.map((item, i) => (
+                    <li key={item} className={`flex items-start gap-2 text-sm ${tab.warning && i === 0 ? 'text-amber-300 font-medium' : 'text-slate-300'}`}>
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-rose-400 flex-shrink-0" />
-                      {item.replace('⚠️ ', '')}
+                      {item}
                     </li>
                   ))}
                 </ul>

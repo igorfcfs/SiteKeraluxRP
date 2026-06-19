@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Leaf } from 'lucide-react'
+import { Menu, X, Leaf, Phone } from 'lucide-react'
 
 const links = [
   { href: '#problema',  label: 'O Problema' },
@@ -42,11 +42,15 @@ export default function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-slate-950/90 backdrop-blur-xl border-b border-white/6 shadow-2xl' : 'bg-transparent'
+      className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 ${
+        menuOpen ? 'rounded-t-2xl' : 'rounded-2xl'
+      } ${
+        scrolled
+          ? 'bg-slate-950/95 backdrop-blur-xl border border-white/10 shadow-2xl'
+          : 'bg-slate-950/75 backdrop-blur-md border border-white/6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
             <Leaf className="w-4 h-4 text-cyan-400" />
@@ -85,15 +89,18 @@ export default function Navbar() {
 
         <a
           href="tel:156"
-          className="hidden md:flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-4 py-2 rounded-lg transition-colors"
+          className="hidden md:flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-4 py-2 rounded-lg transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950"
+          aria-label="Ligar para 156 — Central da Prefeitura"
         >
-          📞 156
+          <Phone className="w-4 h-4" />
+          156
         </a>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(v => !v)}
-          className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors"
+          className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
         >
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -107,7 +114,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-slate-950/95 backdrop-blur-xl border-b border-white/6 overflow-hidden"
+            className="md:hidden border-t border-white/8 overflow-hidden rounded-b-2xl"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {links.map(({ href, label }) => (
@@ -115,15 +122,16 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/5 text-sm font-medium transition-colors"
+                  className="px-3 py-2.5 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                 >
                   {label}
                 </a>
               ))}
               <a
                 href="tel:156"
-                className="mt-2 bg-cyan-500 text-slate-950 font-bold py-2.5 rounded-lg text-center text-sm"
+                className="mt-2 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-lg text-sm transition-colors"
               >
+                <Phone className="w-4 h-4" />
                 Ligar 156
               </a>
             </div>

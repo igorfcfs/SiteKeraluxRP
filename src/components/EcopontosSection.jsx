@@ -92,7 +92,9 @@ function EcopontoCard({ eco, delay }) {
       {/* Expandable "O que aceita" */}
       <button
         onClick={() => setOpen(v => !v)}
-        className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold border-t border-white/6 ${c.icon} hover:bg-white/3 transition-colors`}
+        className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold border-t border-white/6 ${c.icon} hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500/40`}
+        aria-expanded={open}
+        aria-label={`${open ? 'Recolher' : 'Expandir'} lista de materiais aceitos`}
       >
         <span className="flex items-center gap-2">
           <Package className="w-4 h-4" />

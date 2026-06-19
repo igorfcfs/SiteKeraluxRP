@@ -63,19 +63,19 @@ export default function Hero() {
         <motion.div {...fadeUp(0.5)} className="flex flex-wrap justify-center gap-3 mb-20">
           <a
             href="#coleta"
-            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all hover:scale-105 active:scale-95 text-sm"
+            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950"
           >
             Ver sistema de coleta
           </a>
           <a
             href="#ecopontos"
-            className="glass border border-white/10 hover:bg-white/8 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-all hover:scale-105 active:scale-95 text-sm"
+            className="glass border border-white/10 hover:bg-white/8 hover:border-white/20 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
           >
             Encontrar ecopontos
           </a>
           <a
             href="tel:156"
-            className="glass-emerald border border-emerald-500/20 hover:bg-emerald-500/10 text-emerald-300 font-semibold px-6 py-3 rounded-xl transition-all hover:scale-105 active:scale-95 text-sm"
+            className="glass-emerald border border-emerald-500/20 hover:bg-emerald-500/15 hover:border-emerald-500/35 text-emerald-300 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
           >
             Ligar 156
           </a>

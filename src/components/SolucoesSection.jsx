@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { CheckCircle2, XCircle, Zap, Package, Megaphone, GraduationCap, HandshakeIcon } from 'lucide-react'
+import { CheckCircle2, XCircle, Zap, Package, Megaphone, GraduationCap, HandshakeIcon, Lightbulb } from 'lucide-react'
 
 const propostasPriorizadas = [
   {
@@ -121,20 +121,21 @@ export default function SolucoesSection() {
           className="glass rounded-2xl p-1.5 flex gap-1 mb-8 max-w-lg mx-auto"
         >
           {[
-            { id: 'propostas',  label: '🎯 Propostas' },
-            { id: 'sucesso',    label: '✅ Funcionou' },
-            { id: 'fracasso',   label: '❌ Não durou' },
-          ].map(({ id, label }) => (
+            { id: 'propostas', icon: Lightbulb,    label: 'Propostas'  },
+            { id: 'sucesso',   icon: CheckCircle2, label: 'Funcionou'  },
+            { id: 'fracasso',  icon: XCircle,      label: 'Não durou'  },
+          ].map(({ id, icon: Icon, label }) => (
             <button
               key={id}
               onClick={() => setTab(id)}
-              className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-semibold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
                 tab === id
                   ? 'bg-cyan-500/15 border border-cyan-500/30 text-cyan-300'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              {label}
+              <Icon className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden sm:inline">{label}</span>
             </button>
           ))}
         </motion.div>

@@ -1,4 +1,4 @@
-import { Leaf } from 'lucide-react'
+import { Leaf, Phone } from 'lucide-react'
 
 const refs = [
   'Magalhães; Cseh; Gonçalves-Dias (2022) — Blucher',
@@ -66,9 +66,10 @@ export default function Footer() {
           </p>
           <a
             href="tel:156"
-            className="text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500/15 transition-colors font-semibold"
+            className="inline-flex items-center gap-2 text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500/15 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
           >
-            📞 156 — Central da Prefeitura SP
+            <Phone className="w-3.5 h-3.5" />
+            156 — Central da Prefeitura SP
           </a>
         </div>
       </div>

@@ -41,7 +41,8 @@ function FaqItem({ item, index }) {
     >
       <button
         onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center justify-between gap-4 p-5 text-left"
+        className="w-full flex items-center justify-between gap-4 p-5 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500/40"
+        aria-expanded={open}
       >
         <span className="font-semibold text-slate-200 text-sm sm:text-base leading-snug">{item.q}</span>
         <motion.div

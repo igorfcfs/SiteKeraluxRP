@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProblemaSection from './components/ProblemaSection'
@@ -10,16 +11,18 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="bg-slate-950 text-slate-100 min-h-screen overflow-x-hidden">
-      <Navbar />
-      <Hero />
-      <ProblemaSection />
-      <ColetaSection />
-      <EcopontosSection />
-      <ImpactosSection />
-      <SolucoesSection />
-      <DireitosSection />
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-slate-950 text-slate-100 min-h-screen overflow-x-hidden">
+        <Navbar />
+        <Hero />
+        <ProblemaSection />
+        <ColetaSection />
+        <EcopontosSection />
+        <ImpactosSection />
+        <SolucoesSection />
+        <DireitosSection />
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }
