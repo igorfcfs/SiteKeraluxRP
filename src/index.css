@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   * { box-sizing: border-box; }
   html {
@@ -10,11 +12,16 @@
     scroll-margin-top: 6rem;
   }
   body {
-    background: #020617;
-    color: #f1f5f9;
+    background: #f8fafc;
+    color: #0f172a;
     font-family: 'Outfit', 'Work Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  .dark body {
+    background: #020617;
+    color: #f1f5f9;
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -24,29 +31,49 @@
 
 @layer utilities {
   .glass {
-    background: rgba(255,255,255,0.04);
+    background: rgba(15, 23, 42, 0.04);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  .dark .glass {
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
   }
   .glass-cyan {
-    background: rgba(6,182,212,0.06);
+    background: rgba(6,182,212,0.08);
     backdrop-filter: blur(20px);
+    border: 1px solid rgba(6,182,212,0.22);
+  }
+  .dark .glass-cyan {
+    background: rgba(6,182,212,0.06);
     border: 1px solid rgba(6,182,212,0.18);
   }
   .glass-emerald {
-    background: rgba(16,185,129,0.06);
+    background: rgba(16,185,129,0.08);
     backdrop-filter: blur(20px);
+    border: 1px solid rgba(16,185,129,0.22);
+  }
+  .dark .glass-emerald {
+    background: rgba(16,185,129,0.06);
     border: 1px solid rgba(16,185,129,0.18);
   }
   .glass-rose {
-    background: rgba(244,63,94,0.06);
+    background: rgba(244,63,94,0.08);
     backdrop-filter: blur(20px);
+    border: 1px solid rgba(244,63,94,0.22);
+  }
+  .dark .glass-rose {
+    background: rgba(244,63,94,0.06);
     border: 1px solid rgba(244,63,94,0.18);
   }
   .glass-amber {
-    background: rgba(245,158,11,0.06);
+    background: rgba(245,158,11,0.1);
     backdrop-filter: blur(20px);
+    border: 1px solid rgba(245,158,11,0.25);
+  }
+  .dark .glass-amber {
+    background: rgba(245,158,11,0.06);
     border: 1px solid rgba(245,158,11,0.18);
   }
   .text-gradient {
@@ -90,7 +117,7 @@
     scroll-behavior: smooth;
   }
 
-  /* MapLibre popup overrides — dark theme */
+  /* MapLibre popup overrides */
   .maplibregl-popup-content {
     background: transparent !important;
     padding: 0 !important;
@@ -98,6 +125,10 @@
     box-shadow: none !important;
   }
   .maplibregl-popup-tip {
+    border-top-color: #e2e8f0 !important;
+    border-bottom-color: #e2e8f0 !important;
+  }
+  .dark .maplibregl-popup-tip {
     border-top-color: #1e293b !important;
     border-bottom-color: #1e293b !important;
   }
@@ -105,9 +136,13 @@
     display: none !important;
   }
   .maplibregl-ctrl-attrib {
-    background: rgba(15,23,42,0.75) !important;
+    background: rgba(248,250,252,0.9) !important;
     color: #64748b !important;
     border-radius: 4px !important;
   }
-  .maplibregl-ctrl-attrib a { color: #94a3b8 !important; }
+  .dark .maplibregl-ctrl-attrib {
+    background: rgba(15,23,42,0.75) !important;
+  }
+  .maplibregl-ctrl-attrib a { color: #475569 !important; }
+  .dark .maplibregl-ctrl-attrib a { color: #94a3b8 !important; }
 }

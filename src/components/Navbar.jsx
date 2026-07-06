@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Leaf, Phone } from 'lucide-react'
 import { handleSectionNavClick } from '../utils/scrollToSection'
+import ThemeToggle from './ThemeToggle'
 
 const links = [
   { href: '#problema',  label: 'O Problema' },
@@ -46,6 +47,10 @@ export default function Navbar() {
     })
   }
 
+  const navSurface = scrolled
+    ? 'bg-white/90 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-2xl'
+    : 'bg-white/80 dark:bg-slate-950/75 backdrop-blur-md border border-slate-200/60 dark:border-white/6'
+
   return (
     <motion.nav
       initial={{ y: -80 }}
@@ -53,22 +58,18 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 ${
         menuOpen ? 'rounded-t-2xl' : 'rounded-2xl'
-      } ${
-        scrolled
-          ? 'bg-slate-950/95 backdrop-blur-xl border border-white/10 shadow-2xl'
-          : 'bg-slate-950/75 backdrop-blur-md border border-white/6'
-      }`}
+      } ${navSurface}`}
     >
-      <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div className="px-4 sm:px-6 h-14 flex items-center justify-between gap-2">
         <a
           href="#inicio"
           onClick={(e) => onNavClick(e, '#inicio')}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group min-w-0"
         >
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-            <Leaf className="w-4 h-4 text-cyan-400" />
+          <div className="w-8 h-8 rounded-lg bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0">
+            <Leaf className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
           </div>
-          <span className="font-bold text-sm text-slate-200 group-hover:text-cyan-400 transition-colors hidden sm:block">
+          <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hidden sm:block truncate">
             Keralux / Vila Guaraciaba
           </span>
         </a>
@@ -84,8 +85,8 @@ export default function Navbar() {
                   onClick={(e) => onNavClick(e, href)}
                   className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                     active === id
-                      ? 'text-cyan-400'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'text-cyan-600 dark:text-cyan-400'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                   }`}
                 >
                   {active === id && (
@@ -101,24 +102,28 @@ export default function Navbar() {
           })}
         </ul>
 
-        <a
-          href="tel:156"
-          className="hidden md:flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-4 py-2 rounded-lg transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950"
-          aria-label="Ligar para 156 — Central da Prefeitura"
-        >
-          <Phone className="w-4 h-4" />
-          156
-        </a>
+        <div className="flex items-center gap-2 shrink-0">
+          <ThemeToggle />
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen(v => !v)}
-          className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
-          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+          <a
+            href="tel:156"
+            className="hidden md:flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold px-4 py-2 rounded-lg transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-950"
+            aria-label="Ligar para 156 — Central da Prefeitura"
+          >
+            <Phone className="w-4 h-4" />
+            156
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen(v => !v)}
+            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-900/5 dark:hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -129,7 +134,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden border-t border-white/8 overflow-hidden rounded-b-2xl"
+            className="md:hidden border-t border-slate-200 dark:border-white/8 overflow-hidden rounded-b-2xl"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {links.map(({ href, label }) => {
@@ -141,8 +146,8 @@ export default function Navbar() {
                     onClick={(e) => onNavClick(e, href, { closeMenu: true })}
                     className={`px-3 py-3 rounded-lg text-sm font-medium transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
                       active === id
-                        ? 'text-cyan-400 bg-cyan-500/10'
-                        : 'text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/5'
+                        ? 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-500/5'
                     }`}
                   >
                     {label}

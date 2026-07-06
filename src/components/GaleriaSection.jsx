@@ -56,7 +56,7 @@ export default function GaleriaSection() {
 
   return (
     <section id="galeria" className="py-16 sm:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 dark:from-slate-950 via-slate-200/60 dark:via-slate-900/40 to-slate-50 dark:to-slate-950 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
@@ -65,14 +65,14 @@ export default function GaleriaSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-6 sm:mb-10"
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
             Galeria — Registros do local
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             A realidade do{' '}
             <span className="text-gradient">Jardim Keralux</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Fotos tiradas no local entre março e junho de 2026. Caçambas transbordando, quatis, entulho na calçada e a placa de multa ignorada — a evidência está nas imagens.
           </p>
         </motion.div>

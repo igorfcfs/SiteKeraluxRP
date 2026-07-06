@@ -53,7 +53,7 @@ function PulsingDot({ color }) {
         style={{ backgroundColor: color }}
       />
       <span
-        className="relative inline-flex h-5 w-5 rounded-full border-2 border-white shadow-lg"
+        className="relative inline-flex h-5 w-5 rounded-full border-2 border-slate-200 dark:border-white shadow-lg"
         style={{ backgroundColor: color }}
       />
     </div>
@@ -78,7 +78,7 @@ export default function MapaSection() {
 
   return (
     <section id="mapa" className="py-16 sm:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 dark:from-slate-950 via-slate-200/60 dark:via-slate-900/40 to-slate-50 dark:to-slate-950 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         {/* Header */}
@@ -88,7 +88,7 @@ export default function MapaSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
             <Navigation className="w-3 h-3" />
             Localização no Mapa
           </span>
@@ -96,7 +96,7 @@ export default function MapaSection() {
             Onde fica o{' '}
             <span className="text-gradient">Jardim Keralux</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Ermelino Matarazzo, Zona Leste de São Paulo. O ponto viciado de descarte irregular fica a metros da portaria da EACH-USP.
           </p>
         </motion.div>
@@ -112,12 +112,15 @@ export default function MapaSection() {
             <button
               key={m.id}
               onClick={() => setActiveMarker(activeMarker === m.id ? null : m.id)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950"
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-950 ${
+                activeMarker === m.id ? '' : 'bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400'
+              }`}
               style={{
-                background: activeMarker === m.id ? m.bg : 'rgba(255,255,255,0.05)',
-                border: `1px solid ${activeMarker === m.id ? m.border : 'rgba(255,255,255,0.1)'}`,
-                color: activeMarker === m.id ? m.color : '#94a3b8',
-                focusRingColor: m.color,
+                ...(activeMarker === m.id ? {
+                  background: m.bg,
+                  border: `1px solid ${m.border}`,
+                  color: m.color,
+                } : {}),
               }}
             >
               <m.Icon className="w-3 h-3" />
@@ -131,13 +134,12 @@ export default function MapaSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="rounded-2xl overflow-hidden border border-white/8 shadow-2xl"
+          className="rounded-2xl overflow-hidden border border-slate-200 dark:border-white/8 shadow-2xl"
           style={{ height: '480px' }}
         >
           <Map
             center={[-46.366, -23.516]}
             zoom={14}
-            theme="dark"
           >
             <MapControls showZoom position="bottom-right" />
 
@@ -155,7 +157,7 @@ export default function MapaSection() {
                       >
                         <m.Icon className="w-3 h-3" style={{ color: m.color }} />
                       </div>
-                      <span className="font-bold text-sm" style={{ color: '#f1f5f9' }}>{m.label}</span>
+                      <span className="font-bold text-sm text-slate-900 dark:text-slate-100">{m.label}</span>
                     </div>
                     <span
                       className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full"
@@ -163,8 +165,8 @@ export default function MapaSection() {
                     >
                       {m.tag}
                     </span>
-                    <p className="text-xs leading-relaxed" style={{ color: '#94a3b8' }}>{m.description}</p>
-                    <p className="text-[10px] font-medium" style={{ color: '#64748b' }}>{m.address}</p>
+                    <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">{m.description}</p>
+                    <p className="text-[10px] font-medium text-slate-500">{m.address}</p>
                   </div>
                 </MarkerPopup>
               </MapMarker>
@@ -182,8 +184,7 @@ export default function MapaSection() {
           {MARKERS.map((m) => (
             <div
               key={m.id}
-              className="glass rounded-xl p-4 flex items-start gap-3 border transition-colors"
-              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+              className="glass rounded-xl p-4 flex items-start gap-3 border border-slate-200 dark:border-white/6 transition-colors"
             >
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
@@ -192,7 +193,7 @@ export default function MapaSection() {
                 <m.Icon className="w-4 h-4" style={{ color: m.color }} />
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-200 mb-0.5">{m.label}</p>
+                <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-0.5">{m.label}</p>
                 <p className="text-xs text-slate-500 leading-snug">{m.address}</p>
               </div>
             </div>

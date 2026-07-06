@@ -37,20 +37,20 @@ function FaqItem({ item, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.45, delay: index * 0.07 }}
-      className={`glass rounded-2xl border overflow-hidden transition-colors ${open ? 'border-cyan-500/20' : 'border-white/8 hover:border-white/14'}`}
+      className={`glass rounded-2xl border overflow-hidden transition-colors ${open ? 'border-cyan-500/20' : 'border-slate-200 dark:border-white/8 hover:border-slate-300 dark:hover:border-white/14'}`}
     >
       <button
         onClick={() => setOpen(v => !v)}
         className="w-full flex items-center justify-between gap-4 p-5 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500/40"
         aria-expanded={open}
       >
-        <span className="font-semibold text-slate-200 text-sm sm:text-base leading-snug">{item.q}</span>
+        <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-snug">{item.q}</span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
           className="flex-shrink-0"
         >
-          <ChevronDown className={`w-5 h-5 transition-colors ${open ? 'text-cyan-400' : 'text-slate-500'}`} />
+          <ChevronDown className={`w-5 h-5 transition-colors ${open ? 'text-cyan-600 dark:text-cyan-400' : 'text-slate-500'}`} />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -63,8 +63,8 @@ function FaqItem({ item, index }) {
             className="overflow-hidden"
           >
             <div className="px-5 pb-5">
-              <div className="h-px bg-white/6 mb-4" />
-              <p className="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+              <div className="h-px bg-slate-200 dark:bg-white/6 mb-4" />
+              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.a}</p>
             </div>
           </motion.div>
         )}
@@ -78,7 +78,7 @@ export default function DireitosSection() {
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section id="direitos" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <section id="direitos" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/90 dark:bg-slate-900/50">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -86,13 +86,13 @@ export default function DireitosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
             06 — Direitos &amp; Deveres
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             Você tem <span className="text-gradient">direitos</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-xl mx-auto">
             A legislação garante. Saiba como acionar os responsáveis e o que fazer quando o serviço falha.
           </p>
         </motion.div>

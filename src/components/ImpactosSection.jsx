@@ -48,20 +48,20 @@ function KpiCard({ kpi, isActive, delay }) {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isActive ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.5, delay }}
-      className="glass rounded-2xl p-6 text-center border border-white/8"
+      className="glass rounded-2xl p-6 text-center border border-slate-200 dark:border-white/8"
     >
       <div className="text-4xl font-black text-gradient mb-2">
         {count}{kpi.suffix}
       </div>
-      <p className="text-xs text-slate-400 leading-snug">{kpi.label}</p>
+      <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">{kpi.label}</p>
     </motion.div>
   )
 }
 
 function ImpactCard({ icon: Icon, label, color, delay }) {
   const colors = {
-    emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/15',
-    rose:    'text-rose-400 bg-rose-500/10 border-rose-500/15',
+    emerald: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/15',
+    rose:    'text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/15',
   }
   return (
     <motion.div
@@ -74,7 +74,7 @@ function ImpactCard({ icon: Icon, label, color, delay }) {
       <div className={`w-9 h-9 rounded-xl border flex items-center justify-center flex-shrink-0 ${colors[color]}`}>
         <Icon className="w-4 h-4" />
       </div>
-      <p className="text-sm text-slate-300 leading-relaxed pt-1">{label}</p>
+      <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-1">{label}</p>
     </motion.div>
   )
 }
@@ -84,7 +84,7 @@ export default function ImpactosSection() {
   const isInView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
-    <section id="impactos" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <section id="impactos" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/90 dark:bg-slate-900/50">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -92,13 +92,13 @@ export default function ImpactosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
             04 — Impactos
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             O lixo não é só <span className="text-gradient-amber">visual</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
             O acúmulo irregular contamina, adoece e empobrece. Veja o que está em jogo.
           </p>
         </motion.div>
@@ -118,7 +118,7 @@ export default function ImpactosSection() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.2 }}
-              className="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-5 flex items-center gap-2"
+              className="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-5 flex items-center gap-2"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
               Impactos Ambientais
@@ -136,7 +136,7 @@ export default function ImpactosSection() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.25 }}
-              className="text-sm font-bold text-rose-400 uppercase tracking-wider mb-5 flex items-center gap-2"
+              className="text-sm font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider mb-5 flex items-center gap-2"
             >
               <span className="w-2 h-2 rounded-full bg-rose-400" />
               Impactos Sociais e à Saúde
@@ -154,11 +154,11 @@ export default function ImpactosSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-10 glass rounded-2xl p-5 border border-white/8 text-sm text-slate-400 text-center"
+          className="mt-10 glass rounded-2xl p-5 border border-slate-200 dark:border-white/8 text-sm text-slate-600 dark:text-slate-400 text-center"
         >
           Os impactos acima são consistentes com a literatura acadêmica e com os estudos publicados especificamente sobre este bairro
-          {' '}(<span className="text-slate-300">Magalhães; Gonçalves-Dias, 2022; 2023</span>),
-          que documentam a relação entre <span className="text-rose-300">vulnerabilidade social</span> e exposição desproporcional a riscos ambientais.
+          {' '}(<span className="text-slate-700 dark:text-slate-300">Magalhães; Gonçalves-Dias, 2022; 2023</span>),
+          que documentam a relação entre <span className="text-rose-700 dark:text-rose-300">vulnerabilidade social</span> e exposição desproporcional a riscos ambientais.
         </motion.div>
       </div>
     </section>

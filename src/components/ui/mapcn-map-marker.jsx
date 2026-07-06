@@ -78,11 +78,11 @@ function useMap() {
 
 function DefaultLoader() {
   return (
-    <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(2px)' }}>
+    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/40 dark:bg-black/40 backdrop-blur-[2px]">
       <div className="flex gap-1">
-        <span className="size-1.5 animate-pulse rounded-full" style={{ background: 'rgba(148,163,184,0.6)' }} />
-        <span className="size-1.5 animate-pulse rounded-full" style={{ background: 'rgba(148,163,184,0.6)', animationDelay: '150ms' }} />
-        <span className="size-1.5 animate-pulse rounded-full" style={{ background: 'rgba(148,163,184,0.6)', animationDelay: '300ms' }} />
+        <span className="size-1.5 animate-pulse rounded-full bg-slate-400/60 dark:bg-slate-400/60" />
+        <span className="size-1.5 animate-pulse rounded-full bg-slate-400/60 dark:bg-slate-400/60" style={{ animationDelay: '150ms' }} />
+        <span className="size-1.5 animate-pulse rounded-full bg-slate-400/60 dark:bg-slate-400/60" style={{ animationDelay: '300ms' }} />
       </div>
     </div>
   );
@@ -377,8 +377,7 @@ function MarkerPopup({ children, className, closeButton = false, ...popupOptions
   const handleClose = () => popup.remove();
 
   return createPortal(
-    <div className={cn("relative max-w-[15.5rem] rounded-md border p-3 shadow-md", className)}
-      style={{ background: '#1e293b', color: '#f1f5f9', border: '1px solid rgba(255,255,255,0.1)' }}>
+    <div className={cn("relative max-w-[15.5rem] rounded-md border p-3 shadow-md bg-white text-slate-900 border-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:border-white/10", className)}>
       {closeButton && <PopupCloseButton onClick={handleClose} />}
       {children}
     </div>,
@@ -420,8 +419,7 @@ function MarkerTooltip({ children, className, ...popupOptions }) {
   }
 
   return createPortal(
-    <div className={cn("pointer-events-none rounded-md px-2 py-1 text-xs shadow-md", className)}
-      style={{ background: '#0f172a', color: '#e2e8f0' }}>
+    <div className={cn("pointer-events-none rounded-md px-2 py-1 text-xs shadow-md bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200", className)}>
       {children}
     </div>,
     container,
@@ -431,8 +429,7 @@ function MarkerTooltip({ children, className, ...popupOptions }) {
 function MarkerLabel({ children, className, position = "top" }) {
   const positionClasses = { top: "bottom-full mb-1", bottom: "top-full mt-1" };
   return (
-    <div className={cn("absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium", positionClasses[position], className)}
-      style={{ color: '#f1f5f9' }}>
+    <div className={cn("absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium text-slate-800 dark:text-slate-100", positionClasses[position], className)}>
       {children}
     </div>
   );
@@ -447,8 +444,7 @@ const positionClasses = {
 
 function ControlGroup({ children }) {
   return (
-    <div style={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.1)' }}
-      className="flex flex-col overflow-hidden rounded-md shadow-sm [&>button:not(:last-child)]:border-b [&>button:not(:last-child)]:border-white/10">
+    <div className="flex flex-col overflow-hidden rounded-md shadow-sm bg-white border border-slate-200 dark:bg-slate-800 dark:border-white/10 [&>button:not(:last-child)]:border-b [&>button:not(:last-child)]:border-slate-200 dark:[&>button:not(:last-child)]:border-white/10">
       {children}
     </div>
   );
@@ -461,8 +457,7 @@ function ControlButton({ onClick, label, children, disabled = false }) {
       aria-label={label}
       type="button"
       disabled={disabled}
-      className="flex size-8 items-center justify-center transition-colors first:rounded-t-md last:rounded-b-md hover:bg-white/10 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-      style={{ color: 'rgba(148,163,184,0.9)' }}
+      className="flex size-8 items-center justify-center transition-colors first:rounded-t-md last:rounded-b-md text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
     >
       {children}
     </button>
@@ -600,8 +595,7 @@ function MapPopup({ longitude, latitude, onClose, children, className, closeButt
   const handleClose = () => popup.remove();
 
   return createPortal(
-    <div className={cn("relative max-w-[15.5rem] rounded-md border p-3 shadow-md", className)}
-      style={{ background: '#1e293b', color: '#f1f5f9', border: '1px solid rgba(255,255,255,0.1)' }}>
+    <div className={cn("relative max-w-[15.5rem] rounded-md border p-3 shadow-md bg-white text-slate-900 border-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:border-white/10", className)}>
       {closeButton && <PopupCloseButton onClick={handleClose} />}
       {children}
     </div>,

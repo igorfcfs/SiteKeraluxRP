@@ -14,7 +14,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="bg-slate-950 text-slate-100 min-h-screen overflow-x-hidden">
+      <div className="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen overflow-x-hidden transition-colors duration-300">
         <Navbar />
         <Hero />
         <ProblemaSection />

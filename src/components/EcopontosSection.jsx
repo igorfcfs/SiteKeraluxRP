@@ -32,7 +32,7 @@ function DistanceBar({ value }) {
         <span>Aqui</span>
         <span>{value} km</span>
       </div>
-      <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+      <div className="h-2 rounded-full bg-slate-900/5 dark:bg-white/5 overflow-hidden">
         <motion.div
           className={`h-full rounded-full ${value <= 3 ? 'bg-cyan-500' : 'bg-violet-500'}`}
           initial={{ width: 0 }}
@@ -49,8 +49,8 @@ function DistanceBar({ value }) {
 function EcopontoCard({ eco, delay }) {
   const [open, setOpen] = useState(false)
   const colorMap = {
-    cyan:   { border: 'border-cyan-500/25',   icon: 'text-cyan-400',   bg: 'bg-cyan-500/10',   badge: 'bg-cyan-500/15 text-cyan-300'   },
-    violet: { border: 'border-violet-500/25', icon: 'text-violet-400', bg: 'bg-violet-500/10', badge: 'bg-violet-500/15 text-violet-300' },
+    cyan:   { border: 'border-cyan-500/25',   icon: 'text-cyan-600 dark:text-cyan-400',   bg: 'bg-cyan-500/10',   badge: 'bg-cyan-500/15 text-cyan-700 dark:text-cyan-300'   },
+    violet: { border: 'border-violet-500/25', icon: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-500/10', badge: 'bg-violet-500/15 text-violet-700 dark:text-violet-300' },
   }
   const c = colorMap[eco.cor]
   return (
@@ -68,7 +68,7 @@ function EcopontoCard({ eco, delay }) {
             <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold mb-2 ${c.badge}`}>
               Gratuito
             </span>
-            <h3 className="font-black text-slate-100 text-xl">{eco.nome}</h3>
+            <h3 className="font-black text-slate-900 dark:text-slate-100 text-xl">{eco.nome}</h3>
           </div>
           <div className={`text-3xl font-black ${c.icon} text-right flex-shrink-0`}>
             {eco.distancia}
@@ -76,11 +76,11 @@ function EcopontoCard({ eco, delay }) {
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-sm text-slate-400">
+          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
             <MapPin className={`w-4 h-4 flex-shrink-0 ${c.icon}`} />
             {eco.endereco}
           </div>
-          <div className="flex items-center gap-2 text-sm text-slate-400">
+          <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
             <Clock className={`w-4 h-4 flex-shrink-0 ${c.icon}`} />
             {eco.horario}
           </div>
@@ -92,7 +92,7 @@ function EcopontoCard({ eco, delay }) {
       {/* Expandable "O que aceita" */}
       <button
         onClick={() => setOpen(v => !v)}
-        className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold border-t border-white/6 ${c.icon} hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500/40`}
+        className={`w-full flex items-center justify-between px-6 py-3.5 text-sm font-semibold border-t border-slate-200 dark:border-white/6 ${c.icon} hover:bg-slate-900/5 dark:hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500/40`}
         aria-expanded={open}
         aria-label={`${open ? 'Recolher' : 'Expandir'} lista de materiais aceitos`}
       >
@@ -111,7 +111,7 @@ function EcopontoCard({ eco, delay }) {
       >
         <ul className="px-6 pb-5 space-y-2 pt-2">
           {eco.aceita.map(item => (
-            <li key={item} className="flex items-start gap-2 text-sm text-slate-400">
+            <li key={item} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
               <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${eco.cor === 'cyan' ? 'bg-cyan-400' : 'bg-violet-400'}`} />
               {item}
             </li>
@@ -135,13 +135,13 @@ export default function EcopontosSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">
             03 — Ecopontos
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
             Descarte o entulho <span className="text-gradient">corretamente</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
             O Ecoponto é gratuito e o lugar certo para entulho de obras e volumosos. Veja os mais próximos.
           </p>
         </motion.div>
@@ -157,15 +157,15 @@ export default function EcopontosSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="glass rounded-2xl p-6 border border-white/8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          className="glass rounded-2xl p-6 border border-slate-200 dark:border-white/8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
         >
           <div className="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
-            <Navigation className="w-6 h-6 text-amber-400" />
+            <Navigation className="w-6 h-6 text-amber-600 dark:text-amber-400" />
           </div>
           <div>
-            <p className="font-bold text-slate-200 mb-1">Volumes acima de 1 m³</p>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Para grandes volumes de entulho (obras maiores), a responsabilidade é de quem gerou. Empresas de construção devem contratar transportadores licenciados (caçambas autorizadas). Ligue <span className="text-amber-300 font-semibold">156</span> para mais informações.
+            <p className="font-bold text-slate-800 dark:text-slate-200 mb-1">Volumes acima de 1 m³</p>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Para grandes volumes de entulho (obras maiores), a responsabilidade é de quem gerou. Empresas de construção devem contratar transportadores licenciados (caçambas autorizadas). Ligue <span className="text-amber-800 dark:text-amber-300 font-semibold">156</span> para mais informações.
             </p>
           </div>
         </motion.div>

@@ -25,13 +25,13 @@ export default function Hero() {
         <div className="blob absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-500" />
         <div className="blob absolute top-1/3 -right-40 w-[400px] h-[400px] bg-indigo-500" style={{ animationDelay: '3s' }} />
         <div className="blob absolute -bottom-20 left-1/3 w-[360px] h-[360px] bg-emerald-500" style={{ animationDelay: '6s' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/60 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-50/20 dark:from-slate-950/20 via-slate-200/60 dark:via-slate-950/60 to-slate-50 dark:to-slate-950" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         {/* Badge */}
         <motion.div {...fadeUp(0.1)} className="flex justify-center mb-6">
-          <span className="glass-cyan inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-cyan-300 uppercase tracking-wider">
+          <span className="glass-cyan inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-cyan-700 dark:text-cyan-300 uppercase tracking-wider">
             <MapPin className="w-3.5 h-3.5" />
             Ermelino Matarazzo · Zona Leste · São Paulo
           </span>
@@ -75,17 +75,17 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        <motion.p {...fadeUp(0.35)} className="text-center text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+        <motion.p {...fadeUp(0.35)} className="text-center text-slate-600 dark:text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
           Informações sobre coleta, ecopontos, impactos e soluções para a comunidade da{' '}
-          <span className="text-slate-200 font-medium">Vila Guaraciaba</span> e regiões vizinhas.
+          <span className="text-slate-800 dark:text-slate-200 font-medium">Vila Guaraciaba</span> e regiões vizinhas.
         </motion.p>
 
         {/* Alert */}
         <motion.div {...fadeUp(0.45)} className="max-w-xl mx-auto mb-10">
           <div className="glass-amber rounded-2xl p-4 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-amber-200 leading-relaxed">
-              <span className="font-bold text-amber-300">Atenção:</span> Ratos, quatis e escorpiões foram relatados no ponto de descarte junto à portaria da EACH-USP. A área fica próxima a uma escola infantil.
+            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed">
+              <span className="font-bold text-amber-800 dark:text-amber-300">Atenção:</span> Ratos, quatis e escorpiões foram relatados no ponto de descarte junto à portaria da EACH-USP. A área fica próxima a uma escola infantil.
             </p>
           </div>
         </motion.div>
@@ -94,19 +94,19 @@ export default function Hero() {
         <motion.div {...fadeUp(0.5)} className="flex flex-wrap justify-center gap-3 mb-20">
           <a
             href="#coleta"
-            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950"
+            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-950"
           >
             Ver sistema de coleta
           </a>
           <a
             href="#ecopontos"
-            className="glass border border-white/10 hover:bg-white/8 hover:border-white/20 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="glass border border-slate-200 dark:border-white/10 hover:bg-slate-900/5 dark:hover:bg-white/8 hover:border-slate-300 dark:hover:border-white/20 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
           >
             Encontrar ecopontos
           </a>
           <a
             href="tel:156"
-            className="glass-emerald border border-emerald-500/20 hover:bg-emerald-500/15 hover:border-emerald-500/35 text-emerald-300 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+            className="glass-emerald border border-emerald-500/20 hover:bg-emerald-500/15 hover:border-emerald-500/35 text-emerald-700 dark:text-emerald-300 font-semibold px-6 py-3 rounded-xl transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
           >
             Ligar 156
           </a>
@@ -122,7 +122,7 @@ export default function Hero() {
           {stats.map(({ value, label }) => (
             <div key={value} className="glass rounded-2xl p-5 text-center">
               <div className="text-3xl font-black text-gradient mb-1">{value}</div>
-              <div className="text-xs text-slate-400 leading-snug">{label}</div>
+              <div className="text-xs text-slate-600 dark:text-slate-400 leading-snug">{label}</div>
             </div>
           ))}
         </motion.div>

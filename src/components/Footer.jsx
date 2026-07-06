@@ -19,16 +19,16 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-slate-950">
+    <footer className="border-t border-slate-200 dark:border-white/8 bg-slate-50 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-cyan-400" />
+                <Leaf className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               </div>
-              <span className="font-bold text-slate-200">Keralux / Vila Guaraciaba</span>
+              <span className="font-bold text-slate-800 dark:text-slate-200">Keralux / Vila Guaraciaba</span>
             </div>
             <p className="text-sm text-slate-500 leading-relaxed">
               Projeto de Resolução de Problemas I — EACH-USP (2026). Desenvolvido para disseminar informações sobre gestão de resíduos para moradores da zona leste de São Paulo e comunidades em contexto semelhante.
@@ -37,11 +37,11 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Seções</h4>
+            <h4 className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">Seções</h4>
             <ul className="space-y-2">
               {links.map(({ href, label }) => (
                 <li key={href}>
-                  <a href={href} className="text-sm text-slate-500 hover:text-cyan-400 transition-colors">
+                  <a href={href} className="text-sm text-slate-500 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
                     {label}
                   </a>
                 </li>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* References */}
           <div>
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Referências</h4>
+            <h4 className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-4">Referências</h4>
             <ul className="space-y-2">
               {refs.map(r => (
                 <li key={r} className="text-xs text-slate-500 leading-relaxed">{r}</li>
@@ -60,13 +60,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/6 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-slate-200 dark:border-white/6 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-600 text-center sm:text-left">
             Eduardo · Elbio · Eric · Evandro · Gabriel · Gustavo · Igor · Pedro
           </p>
           <a
             href="tel:156"
-            className="inline-flex items-center gap-2 text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500/15 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+            className="inline-flex items-center gap-2 text-xs bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 px-4 py-2 rounded-lg hover:bg-cyan-500/15 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
           >
             <Phone className="w-3.5 h-3.5" />
             156 — Central da Prefeitura SP
