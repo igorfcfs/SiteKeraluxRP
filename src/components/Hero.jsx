@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-x-hidden"
     >
       {/* Animated background blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -28,7 +28,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-50/20 dark:from-slate-950/20 via-slate-200/60 dark:via-slate-950/60 to-slate-50 dark:to-slate-950" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pb-16">
         {/* Badge */}
         <motion.div {...fadeUp(0.1)} className="flex justify-center mb-6">
           <span className="glass-cyan inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold text-cyan-700 dark:text-cyan-300 uppercase tracking-wider">
@@ -117,7 +117,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-6 sm:mb-0"
         >
           {stats.map(({ value, label }) => (
             <div key={value} className="glass rounded-2xl p-5 text-center">
@@ -126,20 +126,20 @@ export default function Hero() {
             </div>
           ))}
         </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
-      >
-        <span className="text-xs uppercase tracking-widest">Role para ver</span>
-        <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-          <ArrowDown className="w-4 h-4" />
+        {/* Scroll indicator — no fluxo do documento para não ser cortado no mobile */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="flex flex-col items-center gap-2 text-slate-500 dark:text-slate-400 mt-10 sm:mt-12 pb-4"
+        >
+          <span className="text-xs uppercase tracking-widest">Role para ver</span>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+            <ArrowDown className="w-4 h-4" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }

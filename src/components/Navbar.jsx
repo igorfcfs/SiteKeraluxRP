@@ -69,7 +69,7 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0">
             <Leaf className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
           </div>
-          <span className="font-bold text-sm text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors hidden sm:block truncate">
+          <span className="font-bold text-[11px] leading-tight min-[380px]:text-xs sm:text-sm text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors truncate min-w-0 max-w-[6.5rem] min-[360px]:max-w-[9rem] min-[420px]:max-w-[12rem] sm:max-w-none">
             Keralux / Vila Guaraciaba
           </span>
         </a>
