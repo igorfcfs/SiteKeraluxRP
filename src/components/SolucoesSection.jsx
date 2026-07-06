@@ -91,7 +91,15 @@ const viabilidadeColor = { 'Alta': 'text-emerald-400', 'Média': 'text-amber-400
 export default function SolucoesSection() {
   const [tab, setTab] = useState('propostas')
   const ref = useRef(null)
+  const contentRef = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
+
+  const selectTab = (id) => {
+    setTab(id)
+    requestAnimationFrame(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    })
+  }
 
   return (
     <section id="solucoes" className="py-24 px-4 sm:px-6 lg:px-8">
@@ -119,6 +127,8 @@ export default function SolucoesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="glass rounded-2xl p-1.5 flex gap-1 mb-8 max-w-lg mx-auto"
+          role="tablist"
+          aria-label="Categorias de soluções"
         >
           {[
             { id: 'propostas', icon: Lightbulb,    label: 'Propostas'  },
@@ -127,19 +137,23 @@ export default function SolucoesSection() {
           ].map(({ id, icon: Icon, label }) => (
             <button
               key={id}
-              onClick={() => setTab(id)}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-sm font-semibold transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
+              type="button"
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => selectTab(id)}
+              className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 px-1.5 sm:px-3 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 min-h-[44px] ${
                 tab === id
                   ? 'bg-cyan-500/15 border border-cyan-500/30 text-cyan-300'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
-              <Icon className="w-4 h-4 flex-shrink-0" />
-              <span className="hidden sm:inline">{label}</span>
+              <Icon className="w-4 h-4 flex-shrink-0" aria-hidden />
+              <span className="leading-tight text-center">{label}</span>
             </button>
           ))}
         </motion.div>
 
+        <div ref={contentRef}>
         <AnimatePresence mode="wait">
           {/* Propostas */}
           {tab === 'propostas' && (
@@ -247,6 +261,7 @@ export default function SolucoesSection() {
             </motion.div>
           )}
         </AnimatePresence>
+        </div>
       </div>
     </section>
   )

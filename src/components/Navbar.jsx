@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Leaf, Phone } from 'lucide-react'
+import { handleSectionNavClick } from '../utils/scrollToSection'
 
 const links = [
   { href: '#problema',  label: 'O Problema' },
@@ -39,6 +40,12 @@ export default function Navbar() {
     return () => observers.forEach(o => o?.disconnect())
   }, [])
 
+  const onNavClick = (e, href, { closeMenu = false } = {}) => {
+    handleSectionNavClick(e, href, {
+      closeMenu: closeMenu ? () => setMenuOpen(false) : undefined,
+    })
+  }
+
   return (
     <motion.nav
       initial={{ y: -80 }}
@@ -53,7 +60,11 @@ export default function Navbar() {
       }`}
     >
       <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-2 group">
+        <a
+          href="#inicio"
+          onClick={(e) => onNavClick(e, '#inicio')}
+          className="flex items-center gap-2 group"
+        >
           <div className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
             <Leaf className="w-4 h-4 text-cyan-400" />
           </div>
@@ -70,7 +81,8 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  onClick={(e) => onNavClick(e, href)}
+                  className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                     active === id
                       ? 'text-cyan-400'
                       : 'text-slate-400 hover:text-slate-200'
@@ -79,7 +91,7 @@ export default function Navbar() {
                   {active === id && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg"
+                      className="absolute inset-0 bg-cyan-500/10 border border-cyan-500/20 rounded-lg pointer-events-none"
                     />
                   )}
                   <span className="relative">{label}</span>
@@ -103,6 +115,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(v => !v)}
           className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
           aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu de navegação'}
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -119,19 +132,26 @@ export default function Navbar() {
             className="md:hidden border-t border-white/8 overflow-hidden rounded-b-2xl"
           >
             <div className="px-4 py-4 flex flex-col gap-1">
-              {links.map(({ href, label }) => (
-                <a
-                  key={href}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
-                >
-                  {label}
-                </a>
-              ))}
+              {links.map(({ href, label }) => {
+                const id = href.slice(1)
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    onClick={(e) => onNavClick(e, href, { closeMenu: true })}
+                    className={`px-3 py-3 rounded-lg text-sm font-medium transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
+                      active === id
+                        ? 'text-cyan-400 bg-cyan-500/10'
+                        : 'text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/5'
+                    }`}
+                  >
+                    {label}
+                  </a>
+                )
+              })}
               <a
                 href="tel:156"
-                className="mt-2 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-2.5 rounded-lg text-sm transition-colors"
+                className="mt-2 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 rounded-lg text-sm transition-colors"
               >
                 <Phone className="w-4 h-4" />
                 Ligar 156

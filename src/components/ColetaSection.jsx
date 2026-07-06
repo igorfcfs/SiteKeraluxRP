@@ -48,7 +48,15 @@ const colorMap = {
 export default function ColetaSection() {
   const [active, setActive] = useState('domestico')
   const ref = useRef(null)
+  const contentRef = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.15 })
+
+  const selectTab = (id) => {
+    setActive(id)
+    requestAnimationFrame(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    })
+  }
   const tab = tabs.find(t => t.id === active)
   const c = colorMap[tab.color]
 
@@ -78,23 +86,28 @@ export default function ColetaSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="glass rounded-2xl p-1.5 flex gap-1 mb-6"
+          role="tablist"
+          aria-label="Tipos de coleta"
         >
           {tabs.map(({ id, label, icon: Icon, color, warning }) => {
             const isActive = id === active
             return (
               <button
                 key={id}
-                onClick={() => setActive(id)}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-sm font-semibold transition-all relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => selectTab(id)}
+                className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3 px-1.5 sm:px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all relative cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500/40 min-h-[44px] ${
                   isActive
                     ? `${colorMap[color].active} border`
                     : `text-slate-400 ${colorMap[color].tab}`
                 }`}
               >
-                <Icon className="w-4 h-4 flex-shrink-0" />
-                <span className="hidden sm:block">{label}</span>
+                <Icon className="w-4 h-4 flex-shrink-0" aria-hidden />
+                <span className="leading-tight text-center">{label}</span>
                 {warning && (
-                  <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0 sm:absolute sm:top-2 sm:right-2" aria-hidden />
                 )}
               </button>
             )
@@ -105,6 +118,8 @@ export default function ColetaSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
+            ref={contentRef}
+            role="tabpanel"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}

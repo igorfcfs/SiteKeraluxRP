@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import CardFanCarousel from './ui/card-fan-carousel'
+import PhotoGallery from './ui/photo-gallery'
 
 import quatis_calcada    from '../assets/galeria/quatis_calcada.jpg'
 import entulho_portaria  from '../assets/galeria/entulho_portaria.jpg'
@@ -82,7 +82,7 @@ export default function GaleriaSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <CardFanCarousel cards={FOTOS} />
+          <PhotoGallery photos={FOTOS} />
         </motion.div>
       </div>
     </section>
